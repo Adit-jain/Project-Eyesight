@@ -9,6 +9,8 @@ Project eyesight analyzes and detects different daily life activities of a perso
         4. Reading book
         5. Tensed
         6. Unconscious
+        
+and alerts in case of any unwanted happening or unethical activity. EYESIGHT can be used for  monitoring workplaces like offices, households, as well as can be used for security measures i.e. Atm guards, Police stations etc. 
     
 
 Quick abstract :-
@@ -84,28 +86,28 @@ Implementation :-
 
 
     1.	Used the model architecture from tensorflow object detection:-
-    a.	Tensorflow has a heap of models for the purpose of object detection. However there is a tradeoff between speed and accuracy on the models, the higher the speed, the lower the accuracy. So we chose a model concentrated in speed. i.e. ‘ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8’.
-    b.	The model converted images to 320x320, used them for detection, then decompressed the images for visualization.
-    c.	The model supported image Augmentation.
-    d.	Used the object_detection api to implement the model.
+                    a.	Tensorflow has a heap of models for the purpose of object detection. However there is a tradeoff between speed and accuracy on the models, the higher the                               speed, the lower the accuracy. So we chose a model concentrated in speed. i.e. ‘ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8’.
+                    b.	The model converted images to 320x320, used them for detection, then decompressed the images for visualization.
+                    c.	The model supported image Augmentation.
+                    d.	Used the object_detection api to implement the model.
     2.	Changed the config file according to our needs.
-    a.	The config file contained paths to be configured i.e. the label path, the tf record path and the number of classes.
-    b.	The config file also contained the checkpoint path necessaryto implement the moel with minimum loss percentage.
+                    a.	The config file contained paths to be configured i.e. the label path, the tf record path and the number of classes.
+                    b.	The config file also contained the checkpoint path necessaryto implement the moel with minimum loss percentage.
     3.	Generated the dataset.
-    a.	30 different images under 6 categories were taken which amounts to 180 images.
-    b.	26 images from each category were transported to train set
-    c.	4 images from each category ere transported to test set.
+                    a.	30 different images under 6 categories were taken which amounts to 180 images.
+                    b.	26 images from each category were transported to train set
+                    c.	4 images from each category ere transported to test set.
     4.	Labelled the dataset
-    a.	LabelImg is a python software used to Label Images
-    b.	The images were labelled according to their category.
+                    a.	LabelImg is a python software used to Label Images
+                    b.	The images were labelled according to their category.
     5.	Generated tensorflow records from the labelled images so as to increase speed.
-    a.	A script was used to convert the images and xml Files into tensorflow records.
-    b.	The tf records helped speed up training process exponentially.
+                    a.	A script was used to convert the images and xml Files into tensorflow records.
+                    b.	The tf records helped speed up training process exponentially.
     6.	Trained the model using tf records.
-    a.	The model was trained for 20,000 steps achieveing a low loss function.
-    b.	The model was exported into a checkpoint and used for real time object detection.
+                    a.	The model was trained for 20,000 steps achieveing a low loss function.
+                    b.	The model was exported into a checkpoint and used for real time object detection.
     7.	Applied the model for real time activity detection.
-    a.	The checkpoint was accessed and along with OpenCV, a 30fps detection rate was achieved over 6 different labels.
+                    a.	The checkpoint was accessed and along with OpenCV, a 30fps detection rate was achieved over 6 different labels.
 
 
 
